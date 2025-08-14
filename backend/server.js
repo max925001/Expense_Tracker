@@ -6,6 +6,7 @@ import expenseRoutes from './routes/expenseRoutes.js';
 import cors from 'cors';
 import morgan from 'morgan';
 import connectToDb from './config/db.js';
+import axios from 'axios'
 
 config();
 connectToDb()
