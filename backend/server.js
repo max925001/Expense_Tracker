@@ -24,6 +24,25 @@ app.use(cors({
 app.use('/uploads', express.static('uploads')); 
 
 app.use(morgan('dev'));
+
+ const url = "https://expense-tracker-ti1l.onrender.com/ping"
+const interval = 300000;
+function reloadWebsite() {
+  axios
+    .get(url)
+    .then((response) => {
+      console.log("website reloded again");
+    })
+    .catch((error) => {
+      console.error(`Error : ${error.message}`);
+    });
+}
+
+setInterval(reloadWebsite, interval);
+app.use('/ping' ,(req,res) =>{
+    res.send('/pong')
+})
+ 
 app.use('/api/users', userRoutes);
 app.use('/api/expenses', expenseRoutes);
 
